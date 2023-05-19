@@ -1,11 +1,11 @@
 import { env } from './env'
 import fastify from 'fastify'
 import { ZodError } from 'zod'
-import { appRoutes } from './http/routes'
+import { igRoutes } from './http/ig-routes'
 
 export const app = fastify()
 
-app.register(appRoutes)
+app.register(igRoutes, { prefix: 'ig' })
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {

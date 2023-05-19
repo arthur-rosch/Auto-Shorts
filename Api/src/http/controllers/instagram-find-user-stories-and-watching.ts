@@ -1,26 +1,27 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makeUserStoriesWatchingUseCase } from '@/use-cases/factories/make-instagram-user-stories-watching'
+import { makeFindUserStoriesAndWatchingUseCase } from '@/use-cases/factories/make-instagram-user-stories-watching'
 
-export async function userStoriesWatching(
+export async function findUserStoriesAndWatchingUseCase(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
-  const userStoriesWatchingBodySchema = z.object({
+  const findUserStoriesAndWatchingUseCaseBodySchema = z.object({
     igUsername: z.string(),
     igPassword: z.string(),
     watchingStoriesUsername: z.string(),
   })
 
   const { igUsername, igPassword, watchingStoriesUsername } =
-    userStoriesWatchingBodySchema.parse(request.body)
+    findUserStoriesAndWatchingUseCaseBodySchema.parse(request.body)
 
   let response
 
   try {
-    const userStoriesWatching = makeUserStoriesWatchingUseCase()
+    const findUserStoriesAndWatchingUseCase =
+      makeFindUserStoriesAndWatchingUseCase()
 
-    response = await userStoriesWatching.execute({
+    response = await findUserStoriesAndWatchingUseCase.execute({
       igUsername,
       igPassword,
       watchingStoriesUsername,

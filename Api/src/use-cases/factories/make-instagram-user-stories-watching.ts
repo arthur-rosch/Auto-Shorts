@@ -1,10 +1,10 @@
 import { InstagramRepository } from '@/repositories/instagram/instagram-repository'
-import { InstagramUserStoriesWatchingUseCase } from '../instagram-user-stories-watching'
+import { InstagramFindUserStoriesAndWatchingUseCase } from '../instagram-find-user-stories-and-watching'
 
-export function makeUserStoriesWatchingUseCase() {
+export function makeFindUserStoriesAndWatchingUseCase() {
   const instagramRepository = new InstagramRepository()
   const instagramUserStoriesWatchingUseCase =
-    new InstagramUserStoriesWatchingUseCase(instagramRepository)
+    new InstagramFindUserStoriesAndWatchingUseCase(instagramRepository)
 
   return instagramUserStoriesWatchingUseCase
 }

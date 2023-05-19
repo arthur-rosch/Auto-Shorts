@@ -5,24 +5,24 @@ import {
   WatchingUserStoriesResponse,
 } from '@/repositories/instagram-publish-repository'
 
-interface InstagramUserStoriesWatchingUseCaseRequest {
+interface InstagramFindUserStoriesAndWatchingUseCaseRequest {
   igUsername: string
   igPassword: string
   watchingStoriesUsername: string
 }
 
-interface InstagramUserStoriesWatchingUseCaseResponse {
+interface InstagramFindUserStoriesAndWatchingUseCaseResponse {
   userStoriesWatching: WatchingUserStoriesResponse
 }
 
-export class InstagramUserStoriesWatchingUseCase {
+export class InstagramFindUserStoriesAndWatchingUseCase {
   constructor(private instagramRepository: InstagramPublishRepository) {}
 
   async execute({
     igUsername,
     igPassword,
     watchingStoriesUsername,
-  }: InstagramUserStoriesWatchingUseCaseRequest): Promise<InstagramUserStoriesWatchingUseCaseResponse> {
+  }: InstagramFindUserStoriesAndWatchingUseCaseRequest): Promise<InstagramFindUserStoriesAndWatchingUseCaseResponse> {
     const loggedInUser = await authenticateInstagramLogin({
       igUsername,
       igPassword,

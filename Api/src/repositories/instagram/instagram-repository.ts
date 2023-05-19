@@ -34,4 +34,25 @@ export class InstagramRepository implements InstagramPublishRepository {
 
     return publishResult
   }
+
+  async watchingUserStories(watchingStoriesUsername: string) {
+    const targetUserStories = await ig.user.searchExact(watchingStoriesUsername)
+
+    const reelsFeed = ig.feed.reelsMedia({
+      userIds: [targetUserStories.pk],
+    })
+
+    const storiesItems = await reelsFeed.items()
+    const storiesTotal = storiesItems.length
+
+    if (storiesItems.length === 0) {
+      console.log(`${targetUserStories.username}'s story is empty`)
+    }
+
+    const seenResult = await ig.story.seen([storiesItems[0]])
+
+    console.log(seenResult.status)
+
+    return { seenResult, storiesTotal }
+  }
 }

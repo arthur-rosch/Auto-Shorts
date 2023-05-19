@@ -3,9 +3,9 @@ import { InstagramRepository } from '@/repositories/instagram/instagram-reposito
 
 export function makePostVideoUseCase() {
   const instagramRepository = new InstagramRepository()
-  const instagramPostVideosUse = new InstagramPostVideosUseCase(
+  const instagramPostVideosUseCase = new InstagramPostVideosUseCase(
     instagramRepository,
   )
 
-  return instagramPostVideosUse
+  return instagramPostVideosUseCase
 }

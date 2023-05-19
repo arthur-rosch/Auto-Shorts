@@ -5,4 +5,9 @@ export interface InstagramPublishRepository {
     file: any,
     caption: string | undefined,
   ): Promise<MediaRepositoryConfigureResponseRootObject>
+
+  publishVideo(
+    urlVideo: string,
+    urlCoverImage: string,
+  ): Promise<MediaRepositoryConfigureResponseRootObject>
 }

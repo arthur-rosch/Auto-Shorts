@@ -1,6 +1,8 @@
 import { FastifyInstance } from 'fastify'
-import { instagramPost } from './controllers/instagramPost'
+import { postPhoto } from './controllers/instagram-post-photo'
+import { postVideo } from './controllers/instagram-post-video'
 
 export async function appRoutes(app: FastifyInstance) {
-  app.post('/instagramPost', instagramPost)
+  app.post('/ig/postPhoto', postPhoto)
+  app.post('/ig/postVideo', postVideo)
 }

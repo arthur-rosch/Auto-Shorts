@@ -1,27 +1,24 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makeInstagramPostUseCase } from '@/use-cases/factories/make-instagram-post'
+import { makePostPhotoUseCase } from '@/use-cases/factories/make-instagram-post-photo'
 
-export async function instagramPost(
-  request: FastifyRequest,
-  reply: FastifyReply,
-) {
-  const instagramPostBodySchema = z.object({
+export async function postPhoto(request: FastifyRequest, reply: FastifyReply) {
+  const postPhotoBodySchema = z.object({
     igUsername: z.string(),
     igPassword: z.string(),
     urlImg: z.string(),
   })
 
-  const { igUsername, igPassword, urlImg } = instagramPostBodySchema.parse(
+  const { igUsername, igPassword, urlImg } = postPhotoBodySchema.parse(
     request.body,
   )
 
   let response
 
   try {
-    const instagramPostUseCase = makeInstagramPostUseCase()
+    const postPhotoUseCase = makePostPhotoUseCase()
 
-    response = await instagramPostUseCase.execute({
+    response = await postPhotoUseCase.execute({
       igUsername,
       igPassword,
       urlImg,

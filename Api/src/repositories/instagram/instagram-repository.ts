@@ -16,4 +16,22 @@ export class InstagramRepository implements InstagramPublishRepository {
 
     return photo
   }
+
+  async publishVideo(urlVideo: string, urlCoverImage: string) {
+    const videoBuffer = await get({
+      url: urlVideo,
+      encoding: null,
+    })
+    const coverBuffer = await get({
+      url: urlCoverImage,
+      encoding: null,
+    })
+
+    const publishResult = await ig.publish.video({
+      video: videoBuffer,
+      coverImage: coverBuffer,
+    })
+
+    return publishResult
+  }
 }

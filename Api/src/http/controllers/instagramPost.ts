@@ -16,21 +16,23 @@ export async function instagramPost(
     request.body,
   )
 
+  let response
+
   try {
     const instagramPostUseCase = makeInstagramPostUseCase()
 
-    await instagramPostUseCase.execute({
+    response = await instagramPostUseCase.execute({
       igUsername,
       igPassword,
       urlImg,
     })
   } catch (err) {
     if (err instanceof Error) {
-      return reply.status(409).send({ message: err.message })
+      return reply.status(400).send({ message: err.message })
     }
 
     throw err
   }
 
-  return reply.status(201).send()
+  return reply.status(201).send(response)
 }

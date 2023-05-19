@@ -1,5 +1,7 @@
 import { authenticateInstagramLogin } from '@/utils/authenticateInstagramLogin'
 import { MediaRepositoryConfigureResponseRootObject } from 'instagram-private-api'
+import { InstagramInvalidCredentialsError } from './errors/instagram-invalid-credentials-error'
+import { InstagramRepository } from '@/repositories/instagram/instagram-repository'
 
 interface InstagramPostUseCaseRequest {
   igUsername: string
@@ -8,11 +10,11 @@ interface InstagramPostUseCaseRequest {
 }
 
 interface InstagramPostUseCaseResponse {
-  photo: MediaRepositoryConfigureResponseRootObject
+  publishPhotoResponse: MediaRepositoryConfigureResponseRootObject
 }
 
 export class InstagramPostUseCase {
-  constructor() {}
+  constructor(private instagramRepository: InstagramRepository) {}
 
   async execute({
     igUsername,
@@ -25,9 +27,14 @@ export class InstagramPostUseCase {
     })
 
     if (!loginUserResponse.pk) {
-      throw new Error('Invalid username or password')
+      throw new InstagramInvalidCredentialsError()
     }
 
-    return { photo }
+    const publishPhotoResponse = await this.instagramRepository.publishPhoto(
+      urlImg,
+      'Teste',
+    )
+
+    return { publishPhotoResponse }
   }
 }

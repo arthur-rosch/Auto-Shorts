@@ -1,7 +1,7 @@
 import { MediaRepositoryConfigureResponseRootObject } from 'instagram-private-api'
 
 export interface InstagramPublishRepository {
-  PublishPhoto(
+  publishPhoto(
     file: any,
     caption: string | undefined,
   ): Promise<MediaRepositoryConfigureResponseRootObject>

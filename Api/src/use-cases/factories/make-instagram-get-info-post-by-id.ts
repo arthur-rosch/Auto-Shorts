@@ -1,11 +1,11 @@
-import { InstagramGetAllInfoUserUseCase } from '../instagram-get-all-info-user'
+import { InstagramGetInfoPostByIdUseCase } from '../instagram-get-info-post-by-id'
 import { InstagramRepository } from '@/repositories/instagram/instagram-repository'
 
 export function makeGetAllInfoUserUseCase() {
   const instagramRepository = new InstagramRepository()
-  const instagramGetAllInfoUseCase = new InstagramGetAllInfoUserUseCase(
+  const instagramGetInfoPostByIdUseCase = new InstagramGetInfoPostByIdUseCase(
     instagramRepository,
   )
 
-  return instagramGetAllInfoUseCase
+  return instagramGetInfoPostByIdUseCase
 }

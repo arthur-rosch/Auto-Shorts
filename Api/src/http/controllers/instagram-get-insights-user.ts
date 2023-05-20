@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makeInsightsUserUseCase } from '@/use-cases/factories/make-instagram-get-insghts-user'
+import { makeInsightsUserUseCase } from '@/use-cases/factories/make-instagram-get-insights-user'
 
 export async function insightsUserUseCase(
   request: FastifyRequest,

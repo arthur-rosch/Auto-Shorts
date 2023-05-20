@@ -1,24 +1,26 @@
+import { MediaInfoResponseRootObject } from 'instagram-private-api'
 import { authenticateInstagramLogin } from '@/utils/authenticateInstagramLogin'
 import { InstagramInvalidCredentialsError } from './errors/instagram-invalid-credentials-error'
 import { InstagramPublishRepository } from '@/repositories/instagram-publish-repository'
-import { UserRepositoryInfoResponseUser } from 'instagram-private-api'
 
-interface InstagramGetAllInfoUseCaseRequest {
+interface InstagramGetInfoPostByIdUseCaseRequest {
   igUsername: string
   igPassword: string
+  postId: string
 }
 
-interface InstagramGetAllInfoUseCaseResponse {
-  getAllInfoUserResponse: UserRepositoryInfoResponseUser
+interface InstagramGetInfoPostByIdUseCaseResponse {
+  getInfoPostResponse: MediaInfoResponseRootObject
 }
 
-export class InstagramGetAllInfoUseCase {
+export class InstagramGetInfoPostByIdUseCase {
   constructor(private instagramRepository: InstagramPublishRepository) {}
 
   async execute({
     igUsername,
     igPassword,
-  }: InstagramGetAllInfoUseCaseRequest): Promise<InstagramGetAllInfoUseCaseResponse> {
+    postId,
+  }: InstagramGetInfoPostByIdUseCaseRequest): Promise<InstagramGetInfoPostByIdUseCaseResponse> {
     const loggedInUser = await authenticateInstagramLogin({
       igUsername,
       igPassword,
@@ -28,9 +30,10 @@ export class InstagramGetAllInfoUseCase {
       throw new InstagramInvalidCredentialsError()
     }
 
-    const getAllInfoUserResponse =
-      await this.instagramRepository.getAllInfoUser(loggedInUser.pk)
+    const getInfoPostResponse = await this.instagramRepository.getInfoPostById(
+      postId,
+    )
 
-    return { getAllInfoUserResponse }
+    return { getInfoPostResponse }
   }
 }

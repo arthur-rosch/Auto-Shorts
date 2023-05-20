@@ -1,5 +1,6 @@
 import {
   StatusResponse,
+  MediaInfoResponseRootObject,
   UserRepositoryInfoResponseUser,
   MediaRepositoryConfigureResponseRootObject,
   InsightsServiceAccountResponseRootObject,
@@ -15,7 +16,9 @@ export interface InstagramPublishRepository {
     caption: string | undefined,
   ): Promise<MediaRepositoryConfigureResponseRootObject>
 
-  getInsightsPost(): Promise<InsightsServiceAccountResponseRootObject>
+  getInsightsUser(): Promise<InsightsServiceAccountResponseRootObject>
+
+  getInfoPostById(postId: string): Promise<MediaInfoResponseRootObject>
 
   publishVideo(
     urlVideo: string,

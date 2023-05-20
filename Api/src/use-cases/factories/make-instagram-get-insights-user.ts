@@ -1,4 +1,4 @@
-import { InstagramInsightsUserUseCase } from '../instagram-get-insghts-user'
+import { InstagramInsightsUserUseCase } from '../instagram-get-insights-user'
 import { InstagramRepository } from '@/repositories/instagram/instagram-repository'
 
 export function makeInsightsUserUseCase() {

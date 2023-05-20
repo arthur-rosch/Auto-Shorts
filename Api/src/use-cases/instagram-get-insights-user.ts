@@ -28,7 +28,7 @@ export class InstagramInsightsUserUseCase {
       throw new InstagramInvalidCredentialsError()
     }
 
-    const insightsPost = await this.instagramRepository.getInsightsPost()
+    const insightsPost = await this.instagramRepository.getInsightsUser()
 
     return { insightsPost }
   }

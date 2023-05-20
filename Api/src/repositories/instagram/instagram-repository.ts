@@ -35,6 +35,12 @@ export class InstagramRepository implements InstagramPublishRepository {
     return publishResult
   }
 
+  async getAllInfoUser(userId: string | number) {
+    const getAllInfo = await ig.user.info(userId)
+
+    return getAllInfo
+  }
+
   async watchingUserStories(watchingStoriesUsername: string) {
     const targetUserStories = await ig.user.searchExact(watchingStoriesUsername)
 

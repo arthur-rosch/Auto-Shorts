@@ -1,4 +1,4 @@
-import { InstagramPostPhotoUseCase } from '../instagram-post-photo'
+import { InstagramPostPhotoUseCase } from '../../instagram/instagram-post-photo'
 import { InstagramRepository } from '@/repositories/instagram/instagram-repository'
 
 export function makePostPhotoUseCase() {

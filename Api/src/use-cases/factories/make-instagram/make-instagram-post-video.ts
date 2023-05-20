@@ -1,4 +1,4 @@
-import { InstagramPostVideosUseCase } from '../instagram-post-video'
+import { InstagramPostVideosUseCase } from '../../instagram/instagram-post-video'
 import { InstagramRepository } from '@/repositories/instagram/instagram-repository'
 
 export function makePostVideoUseCase() {

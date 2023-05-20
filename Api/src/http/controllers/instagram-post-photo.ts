@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makePostPhotoUseCase } from '@/use-cases/factories/make-instagram-post-photo'
+import { makePostPhotoUseCase } from '@/use-cases/factories/make-instagram/make-instagram-post-photo'
 
 export async function postPhoto(request: FastifyRequest, reply: FastifyReply) {
   const postPhotoBodySchema = z.object({

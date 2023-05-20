@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makeFindUserStoriesAndWatchingUseCase } from '@/use-cases/factories/make-instagram-user-stories-watching'
+import { makeFindUserStoriesAndWatchingUseCase } from '@/use-cases/factories/make-instagram/make-instagram-user-stories-watching'
 
 export async function findUserStoriesAndWatchingUseCase(
   request: FastifyRequest,

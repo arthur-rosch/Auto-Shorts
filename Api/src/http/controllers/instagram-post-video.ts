@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makePostVideoUseCase } from '@/use-cases/factories/make-instagram-post-video'
+import { makePostVideoUseCase } from '@/use-cases/factories/make-instagram/make-instagram-post-video'
 
 export async function postVideo(request: FastifyRequest, reply: FastifyReply) {
   const postVideoBodySchema = z.object({

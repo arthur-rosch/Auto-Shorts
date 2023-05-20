@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makeGetAllInfoUserUseCase } from '@/use-cases/factories/make-instagram-get-all-info'
+import { makeGetAllInfoUserUseCase } from '@/use-cases/factories/make-instagram/make-instagram-get-all-info'
 
 export async function getAllInfoUserUseCase(
   request: FastifyRequest,

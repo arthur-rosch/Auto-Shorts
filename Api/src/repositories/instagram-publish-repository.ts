@@ -2,6 +2,7 @@ import {
   StatusResponse,
   UserRepositoryInfoResponseUser,
   MediaRepositoryConfigureResponseRootObject,
+  InsightsServiceAccountResponseRootObject,
 } from 'instagram-private-api'
 
 export interface WatchingUserStoriesResponse {
@@ -14,7 +15,8 @@ export interface InstagramPublishRepository {
     caption: string | undefined,
   ): Promise<MediaRepositoryConfigureResponseRootObject>
 
-  // watchingUsername,
+  getInsightsPost(): Promise<InsightsServiceAccountResponseRootObject>
+
   publishVideo(
     urlVideo: string,
     urlCoverImage: string,

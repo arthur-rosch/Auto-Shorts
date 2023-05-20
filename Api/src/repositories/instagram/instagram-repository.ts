@@ -17,6 +17,12 @@ export class InstagramRepository implements InstagramPublishRepository {
     return photo
   }
 
+  async getInsightsPost() {
+    const insightsPost = ig.insights.account({})
+
+    return insightsPost
+  }
+
   async publishVideo(urlVideo: string, urlCoverImage: string) {
     const videoBuffer = await get({
       url: urlVideo,

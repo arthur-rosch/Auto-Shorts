@@ -5,6 +5,7 @@ import { postVideo } from './controllers/instagram-post-video'
 import { findUserStoriesAndWatchingUseCase } from './controllers/instagram-find-user-stories-and-watching'
 
 import { getAllInfoUserUseCase } from './controllers/instagram-get-all-info'
+import { insightsUserUseCase } from './controllers/instagram-get-insghts-user'
 
 export async function igRoutes(ig: FastifyInstance) {
   ig.post('/postPhoto', postPhoto)
@@ -12,4 +13,5 @@ export async function igRoutes(ig: FastifyInstance) {
   ig.post('/findUserStoriesAndWatching', findUserStoriesAndWatchingUseCase)
 
   ig.post('/getAllInfoUser', getAllInfoUserUseCase)
+  ig.post('/getInsightsUser', insightsUserUseCase)
 }

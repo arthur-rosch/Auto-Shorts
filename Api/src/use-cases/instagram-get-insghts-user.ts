@@ -1,26 +1,24 @@
 import { authenticateInstagramLogin } from '@/utils/authenticateInstagramLogin'
-import { MediaRepositoryConfigureResponseRootObject } from 'instagram-private-api'
+import { InsightsServiceAccountResponseRootObject } from 'instagram-private-api'
 import { InstagramPublishRepository } from '@/repositories/instagram-publish-repository'
 import { InstagramInvalidCredentialsError } from './errors/instagram-invalid-credentials-error'
 
-interface InstagramPostPhotoUseCaseRequest {
+interface InstagramInsightsUserUseCaseRequest {
   igUsername: string
   igPassword: string
-  urlImg: string
 }
 
-interface InstagramPostPhotoUseCaseResponse {
-  photoPosted: MediaRepositoryConfigureResponseRootObject
+interface InstagramInsightsUserUseCaseResponse {
+  insightsPost: InsightsServiceAccountResponseRootObject
 }
 
-export class InstagramPostPhotoUseCase {
+export class InstagramInsightsUserUseCase {
   constructor(private instagramRepository: InstagramPublishRepository) {}
 
   async execute({
     igUsername,
     igPassword,
-    urlImg,
-  }: InstagramPostPhotoUseCaseRequest): Promise<InstagramPostPhotoUseCaseResponse> {
+  }: InstagramInsightsUserUseCaseRequest): Promise<InstagramInsightsUserUseCaseResponse> {
     const loggedInUser = await authenticateInstagramLogin({
       igUsername,
       igPassword,
@@ -30,11 +28,8 @@ export class InstagramPostPhotoUseCase {
       throw new InstagramInvalidCredentialsError()
     }
 
-    const photoPosted = await this.instagramRepository.publishPhoto(
-      urlImg,
-      'Teste',
-    )
+    const insightsPost = await this.instagramRepository.getInsightsPost()
 
-    return { photoPosted }
+    return { insightsPost }
   }
 }

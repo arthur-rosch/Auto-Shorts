@@ -7,12 +7,10 @@ export async function findUserStoriesAndWatchingUseCase(
   reply: FastifyReply,
 ) {
   const findUserStoriesAndWatchingUseCaseBodySchema = z.object({
-    igUsername: z.string(),
-    igPassword: z.string(),
     watchingStoriesUsername: z.string(),
   })
 
-  const { igUsername, igPassword, watchingStoriesUsername } =
+  const { watchingStoriesUsername } =
     findUserStoriesAndWatchingUseCaseBodySchema.parse(request.body)
 
   let response
@@ -22,8 +20,6 @@ export async function findUserStoriesAndWatchingUseCase(
       makeFindUserStoriesAndWatchingUseCase()
 
     response = await findUserStoriesAndWatchingUseCase.execute({
-      igUsername,
-      igPassword,
       watchingStoriesUsername,
     })
   } catch (err) {

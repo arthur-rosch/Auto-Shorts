@@ -7,13 +7,10 @@ export async function getInfoPostByIdUseCase(
   reply: FastifyReply,
 ) {
   const getInfoPostByIdUseCaseBodySchema = z.object({
-    igUsername: z.string(),
-    igPassword: z.string(),
     postId: z.string(),
   })
 
-  const { igUsername, igPassword, postId } =
-    getInfoPostByIdUseCaseBodySchema.parse(request.body)
+  const { postId } = getInfoPostByIdUseCaseBodySchema.parse(request.params)
 
   let response
 
@@ -21,8 +18,6 @@ export async function getInfoPostByIdUseCase(
     const getInfoPostByIdUseCase = makeGetAllInfoUserUseCase()
 
     response = await getInfoPostByIdUseCase.execute({
-      igUsername,
-      igPassword,
       postId,
     })
   } catch (err) {

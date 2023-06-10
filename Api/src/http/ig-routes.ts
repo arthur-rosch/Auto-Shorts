@@ -11,9 +11,9 @@ import { getInfoPostByIdUseCase } from './controllers/instagram-get-info-post-by
 export async function igRoutes(ig: FastifyInstance) {
   ig.post('/postPhoto', postPhoto)
   ig.post('/postVideo', postVideo)
+  ig.post('/getAllInfoUser', getAllInfoUserUseCase)
   ig.post('/findUserStoriesAndWatching', findUserStoriesAndWatchingUseCase)
 
-  ig.post('/getInfoPostById', getInfoPostByIdUseCase)
-  ig.post('/getAllInfoUser', getAllInfoUserUseCase)
-  ig.post('/getInsightsUser', insightsUserUseCase)
+  ig.get('/getInsightsUser', insightsUserUseCase)
+  ig.get('/getInfoPost/:id', getInfoPostByIdUseCase)
 }

@@ -4,14 +4,11 @@ import { makePostVideoUseCase } from '@/use-cases/factories/make-instagram/make-
 
 export async function postVideo(request: FastifyRequest, reply: FastifyReply) {
   const postVideoBodySchema = z.object({
-    igUsername: z.string(),
-    igPassword: z.string(),
     urlVideo: z.string(),
     urlCoverImage: z.string(),
   })
 
-  const { igUsername, igPassword, urlVideo, urlCoverImage } =
-    postVideoBodySchema.parse(request.body)
+  const { urlVideo, urlCoverImage } = postVideoBodySchema.parse(request.body)
 
   let response
 
@@ -19,8 +16,6 @@ export async function postVideo(request: FastifyRequest, reply: FastifyReply) {
     const postVideoUseCase = makePostVideoUseCase()
 
     response = await postVideoUseCase.execute({
-      igUsername,
-      igPassword,
       urlVideo,
       urlCoverImage,
     })

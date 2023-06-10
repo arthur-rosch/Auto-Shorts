@@ -4,14 +4,10 @@ import { makePostPhotoUseCase } from '@/use-cases/factories/make-instagram/make-
 
 export async function postPhoto(request: FastifyRequest, reply: FastifyReply) {
   const postPhotoBodySchema = z.object({
-    igUsername: z.string(),
-    igPassword: z.string(),
     urlImg: z.string(),
   })
 
-  const { igUsername, igPassword, urlImg } = postPhotoBodySchema.parse(
-    request.body,
-  )
+  const { urlImg } = postPhotoBodySchema.parse(request.body)
 
   let response
 
@@ -19,8 +15,6 @@ export async function postPhoto(request: FastifyRequest, reply: FastifyReply) {
     const postPhotoUseCase = makePostPhotoUseCase()
 
     response = await postPhotoUseCase.execute({
-      igUsername,
-      igPassword,
       urlImg,
     })
   } catch (err) {

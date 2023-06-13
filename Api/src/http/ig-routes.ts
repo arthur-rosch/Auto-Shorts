@@ -7,10 +7,11 @@ import { findUserStoriesAndWatchingUseCase } from './controllers/instagram-find-
 import { getAllInfoUserUseCase } from './controllers/instagram-get-all-info'
 import { insightsUserUseCase } from './controllers/instagram-get-insights-user'
 import { getInfoPostByIdUseCase } from './controllers/instagram-get-info-post-by-id'
-
+import { downloaderUseCase } from './controllers/instagram-downloader'
 export async function igRoutes(ig: FastifyInstance) {
   ig.post('/postPhoto', postPhoto)
   ig.post('/postVideo', postVideo)
+  ig.post('/downloader', downloaderUseCase)
   ig.post('/getAllInfoUser', getAllInfoUserUseCase)
   ig.post('/findUserStoriesAndWatching', findUserStoriesAndWatchingUseCase)
 

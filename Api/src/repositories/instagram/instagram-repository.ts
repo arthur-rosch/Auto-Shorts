@@ -1,13 +1,10 @@
-import { get } from 'request-promise'
 import { ig } from '@/lib/instagram'
+import { getVideoBuffer } from '@/utils/getVideoBuffer'
 import { InstagramPublishRepository } from '../instagram-publish-repository'
 
 export class InstagramRepository implements InstagramPublishRepository {
-  async publishPhoto(file: any, caption: string | undefined) {
-    const imageBuffer = await get({
-      url: file,
-      encoding: null,
-    })
+  async publishPhoto(file: string, caption: string | undefined) {
+    const imageBuffer = await getVideoBuffer(file)
 
     const photo = await ig.publish.photo({
       file: imageBuffer,
@@ -30,14 +27,8 @@ export class InstagramRepository implements InstagramPublishRepository {
   }
 
   async publishVideo(urlVideo: string, urlCoverImage: string) {
-    const videoBuffer = await get({
-      url: urlVideo,
-      encoding: null,
-    })
-    const coverBuffer = await get({
-      url: urlCoverImage,
-      encoding: null,
-    })
+    const videoBuffer = await getVideoBuffer(urlVideo)
+    const coverBuffer = await getVideoBuffer(urlCoverImage)
 
     const publishResult = await ig.publish.video({
       video: videoBuffer,
@@ -72,5 +63,11 @@ export class InstagramRepository implements InstagramPublishRepository {
     console.log(seenResult.status)
 
     return { seenResult, storiesTotal }
+  }
+
+  async downloader(url: string) {
+    // const urlDirect = await instagramGetUrl(url)
+    // console.log(urlDirect)
+    return 'sdfsdf'
   }
 }

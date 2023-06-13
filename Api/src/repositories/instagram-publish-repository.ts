@@ -12,7 +12,7 @@ export interface WatchingUserStoriesResponse {
 }
 export interface InstagramPublishRepository {
   publishPhoto(
-    file: any,
+    file: string,
     caption: string | undefined,
   ): Promise<MediaRepositoryConfigureResponseRootObject>
 
@@ -32,4 +32,6 @@ export interface InstagramPublishRepository {
   watchingUserStories(
     watchingStoriesUsername: string,
   ): Promise<WatchingUserStoriesResponse>
+
+  downloader(url: string): Promise<string>
 }

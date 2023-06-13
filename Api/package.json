@@ -13,13 +13,14 @@
   "dependencies": {
     "@prisma/client": "^4.14.1",
     "@rocketseat/eslint-config": "^1.2.0",
+    "axios": "1.4.0",
     "discord.js": "14.11.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.40.0",
     "fastify": "^4.17.0",
     "instagram-private-api": "1.45.3",
+    "instagram-url-direct": "1.0.13",
     "prisma": "^4.14.1",
-    "request-promise": "4.2.6",
     "zod": "^3.21.4"
   },
   "devDependencies": {
